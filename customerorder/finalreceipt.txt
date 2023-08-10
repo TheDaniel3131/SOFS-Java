@@ -1,0 +1,38 @@
+SignatureFriedRice 1 6.0 null 
+   jason 
+SignatureFriedRice 1 6.0 null 
+   jason 
+SignatureFriedRice 1 6.0 null 
+   jason 
+HaiwaneseChickenRice 1 7.5 null 
+   daniel 
+SignatureFriedRice 1 6.0 null 
+   daniel 
+TraditionalNasiLemak 1 10.0 null 
+   daniel 
+MamakGoreng 1 7.5 null 
+   daniel 
+IcedTarik 1 4.5 null 
+   daniel 
+TraditionalNasiLemak 1 10.0 null 
+   afsdf 
+TraditionalNasiLemak 1 10.0 null 
+   afsdf 
+TraditionalNasiLemak 1 10.0 null 
+   afsdf 
+TraditionalNasiLemak 1 10.0 null 
+   afsdf 
+TraditionalNasiLemak 1 10.0 null 
+   afsdf 
+TraditionalNasiLemak 1 10.0 null 
+   afsdf 
+TraditionalNasiLemak 1 10.0 null 
+   afsdf 
+TraditionalNasiLemak 1 10.0 null 
+   afsdf 
+SignatureFriedRice 1 6.0 null 
+   afsdf 
+SignatureFriedRice 1 6.0 null 
+   afsdf 
+IcedMilo 1 5.5 null 
+    

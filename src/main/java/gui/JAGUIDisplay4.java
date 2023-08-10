@@ -1,0 +1,1185 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package gui;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+
+/**
+ *
+ * @author Daniel
+ */
+public class JAGUIDisplay4 extends javax.swing.JFrame {
+
+    
+
+    File f = new File("C:\\NetBeansProjects\\JavaAssignment\\customerdatabase");
+    int ln;
+    String Username,Password;
+    
+    /**
+     * Creates new form JAGUIDIsplay4
+     */
+    public JAGUIDisplay4() {
+        
+    
+        initComponents();
+        
+        //Scrollable 
+  
+ 
+        
+//      Title: Spiderman Online Food Services   
+//      JLabel lbl = new lbl("<HTML><U>YOUR TEXT HERE</U></HTML>");
+//      lbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        String t = "<HTML><U><B>Spiderman Online Food Services</B></U></HTML>";
+        lblSOFS.setText(t);
+        
+  
+        this.setLocationRelativeTo(null);
+//        this.setResizable(false);
+        
+
+
+      
+    }
+
+    void createFolder(){
+        if(!f.exists()){
+            f.mkdirs();
+        }
+    }
+    
+    
+    void readFiles(){
+        try {
+            FileReader fr = new FileReader(f+"\\customerdetail.txt");
+            System.out.println("File exists!");
+        } catch (FileNotFoundException ex) {
+            try {
+              FileWriter fw = new FileWriter(f+"\\customerdetail.txt");
+              System.out.println("File Created");
+            } catch (IOException ex1){
+                Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null,ex1);
+            }
+        }
+    }
+    
+    void addData(String usr, String pwd){
+        try{
+            RandomAccessFile raf = new RandomAccessFile(f+"\\customerdetail.txt","rw");
+                for(int i=0;i<ln;i++){
+                raf.readLine();
+                }
+            if(ln>0){
+            raf.writeBytes("\r\n");
+            raf.writeBytes("\r\n");
+            }    
+            raf.writeBytes("Username: "+usr+ "\r\n");
+            raf.writeBytes("Password: "+pwd);
+
+        }catch (FileNotFoundException ex) { 
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null,ex);
+        }catch (IOException ex){
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null,ex);
+        }
+    }
+    
+    void login(String usr,String pwd){
+        try {
+            RandomAccessFile raf = new RandomAccessFile(f+"\\customerdetail.txt", "rw");
+            for(int i=0;i<ln;i+=3){System.out.println("count "+i);
+                String forUser = raf.readLine().substring(10);
+                String forPwd = raf.readLine().substring(10);
+//                System.out.println(forUser);
+                if(usr.equals(forUser) & pwd.equals(forPwd)){
+                    JOptionPane.showMessageDialog(null, "Successfully Register!");    
+                    setVisible(false);
+                    new Login().setVisible(true);
+                    
+                    break;
+                }else if(i==(ln-2)){
+                    JOptionPane.showMessageDialog(null, "Username Has Been Taken");     
+                    break;
+                    
+                }
+
+                for(int k=1;k<=1;k++){
+                    raf.readLine();
+                }
+                
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    void countLines(){
+        try {
+            ln=0;
+            RandomAccessFile raf = new RandomAccessFile(f+"\\customerdetail.txt", "rw");
+            for(int i=0;raf.readLine()!=null;i++){
+                ln++;
+            }
+            System.out.println("number of lines:"+ln);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+//    
+//    
+//    public class Main {
+//        int x = 5;
+//
+//        public static void main(String[] args) {
+//          Main myObj = new Main();
+//          System.out.println(myObj.x);
+//        }
+//      }
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        lblSOFS = new javax.swing.JLabel();
+        ButtonBack = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btnNasiLemak = new javax.swing.JButton();
+        btnChickenRice = new javax.swing.JButton();
+        btnFriedRice = new javax.swing.JButton();
+        btnMamakGoreng = new javax.swing.JButton();
+        btnCharKweyTeow = new javax.swing.JButton();
+        btnIpohHorFun = new javax.swing.JButton();
+        ButtonBack1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        btnClear = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        comboBoxItemCa = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        btnClear1 = new javax.swing.JButton();
+        btnPay = new javax.swing.JButton();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TableCO = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtTax = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
+        txtSubtotal = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        txtCardNo = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtareaAddress = new javax.swing.JTextArea();
+        jLabel13 = new javax.swing.JLabel();
+        comboBoxPM = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        txtPayFN = new javax.swing.JTextField();
+        txtCardCVV = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TableRCT = new javax.swing.JTable();
+        jLabel16 = new javax.swing.JLabel();
+        btnPrintReceipt = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1433, 799));
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(216, 65, 65));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1433, 799));
+        jPanel1.setLayout(null);
+
+        lblSOFS.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblSOFS.setForeground(new java.awt.Color(255, 255, 255));
+        lblSOFS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblSOFS);
+        lblSOFS.setBounds(-20, 10, 690, 65);
+
+        ButtonBack.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        ButtonBack.setText("EXIT");
+        ButtonBack.setToolTipText("exit button");
+        ButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonBackActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ButtonBack);
+        ButtonBack.setBounds(750, 30, 90, 40);
+
+        jLabel10.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(80, 140, 160, 33);
+
+        jPanel2.setBackground(new java.awt.Color(255, 102, 102));
+
+        btnNasiLemak.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        btnNasiLemak.setIcon(new javax.swing.ImageIcon("C:\\Users\\danie\\Documents\\NetBeansProjects\\JavaAssignment\\src\\main\\java\\images\\nasilemak.jfif")); // NOI18N
+        btnNasiLemak.setText("RM10.00");
+        btnNasiLemak.setToolTipText("Nasi Lemak");
+        btnNasiLemak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNasiLemakActionPerformed(evt);
+            }
+        });
+
+        btnChickenRice.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        btnChickenRice.setIcon(new javax.swing.ImageIcon("C:\\Users\\danie\\Documents\\NetBeansProjects\\JavaAssignment\\src\\main\\java\\images\\haiwanesechickenrice.png")); // NOI18N
+        btnChickenRice.setText("RM7.00");
+        btnChickenRice.setToolTipText("Chicken Rice Haiwanese");
+        btnChickenRice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChickenRiceActionPerformed(evt);
+            }
+        });
+
+        btnFriedRice.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        btnFriedRice.setIcon(new javax.swing.ImageIcon("C:\\Users\\danie\\Documents\\NetBeansProjects\\JavaAssignment\\src\\main\\java\\images\\yangzhouchaofan.png")); // NOI18N
+        btnFriedRice.setText("RM6.00");
+        btnFriedRice.setToolTipText("Nasi Goreng");
+        btnFriedRice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFriedRiceActionPerformed(evt);
+            }
+        });
+
+        btnMamakGoreng.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnMamakGoreng.setIcon(new javax.swing.ImageIcon("C:\\Users\\danie\\Documents\\NetBeansProjects\\JavaAssignment\\src\\main\\java\\images\\mamakgoreng.png")); // NOI18N
+        btnMamakGoreng.setText("RM7.50");
+        btnMamakGoreng.setToolTipText("Mee goreng");
+        btnMamakGoreng.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMamakGorengActionPerformed(evt);
+            }
+        });
+
+        btnCharKweyTeow.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        btnCharKweyTeow.setIcon(new javax.swing.ImageIcon("C:\\Users\\danie\\Documents\\NetBeansProjects\\JavaAssignment\\src\\main\\java\\images\\penangcharkweyteow.png")); // NOI18N
+        btnCharKweyTeow.setText("RM8.50");
+        btnCharKweyTeow.setToolTipText("Char Kwey Teow");
+        btnCharKweyTeow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCharKweyTeowActionPerformed(evt);
+            }
+        });
+
+        btnIpohHorFun.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        btnIpohHorFun.setIcon(new javax.swing.ImageIcon("C:\\Users\\danie\\Documents\\NetBeansProjects\\JavaAssignment\\src\\main\\java\\images\\ipohhorfun.png")); // NOI18N
+        btnIpohHorFun.setText("RM10.00");
+        btnIpohHorFun.setToolTipText("Ipoh Hor Fun");
+        btnIpohHorFun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIpohHorFunActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnIpohHorFun, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnChickenRice, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCharKweyTeow, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFriedRice, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNasiLemak, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMamakGoreng, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFriedRice, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNasiLemak, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnChickenRice, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCharKweyTeow, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMamakGoreng, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIpohHorFun, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(30, 130, 560, 340);
+
+        ButtonBack1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        ButtonBack1.setText("BACK");
+        ButtonBack1.setToolTipText("back button");
+        ButtonBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonBack1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ButtonBack1);
+        ButtonBack1.setBounds(630, 30, 90, 40);
+
+        jLabel7.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Foods ");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(40, 80, 60, 33);
+
+        btnClear.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        btnClear.setText("Delete Item");
+        btnClear.setToolTipText("Delete An Item/Items From The Table");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnClear);
+        btnClear.setBounds(640, 310, 100, 40);
+
+        jPanel5.setBackground(new java.awt.Color(255, 102, 102));
+
+        comboBoxItemCa.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        comboBoxItemCa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<SELECT>", "IcedMilo", "IcedTarik" }));
+        comboBoxItemCa.setToolTipText("Select Drinks And Other Items");
+        comboBoxItemCa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxItemCaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGap(160, 160, 160)
+                    .addComponent(comboBoxItemCa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(160, 160, 160)))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 170, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGap(65, 65, 65)
+                    .addComponent(comboBoxItemCa, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(66, Short.MAX_VALUE)))
+        );
+
+        jPanel1.add(jPanel5);
+        jPanel5.setBounds(30, 540, 560, 170);
+
+        jLabel12.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Others/New Items");
+        jPanel1.add(jLabel12);
+        jLabel12.setBounds(40, 500, 220, 33);
+
+        btnClear1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        btnClear1.setText("Clear");
+        btnClear1.setToolTipText("Clear Out The Items In The Table");
+        btnClear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClear1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnClear1);
+        btnClear1.setBounds(640, 240, 100, 40);
+
+        btnPay.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnPay.setText("Pay Order");
+        btnPay.setToolTipText("Pay Your Order Now");
+        btnPay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPayActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPay);
+        btnPay.setBounds(630, 380, 120, 40);
+        jPanel1.add(jTabbedPane2);
+        jTabbedPane2.setBounds(560, 650, 2, 4);
+
+        jTabbedPane1.setBackground(new java.awt.Color(255, 102, 102));
+        jTabbedPane1.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+
+        jPanel4.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel4.setLayout(null);
+
+        TableCO.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Food Name", "Quantity", "Food Price (RM)"
+            }
+        ));
+        TableCO.setToolTipText("Show Items, Quantity and Price.");
+        jScrollPane1.setViewportView(TableCO);
+
+        jPanel4.add(jScrollPane1);
+        jScrollPane1.setBounds(80, 30, 430, 280);
+
+        jLabel8.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Subtotal:");
+        jPanel4.add(jLabel8);
+        jLabel8.setBounds(113, 340, 100, 33);
+
+        jLabel9.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Tax:");
+        jPanel4.add(jLabel9);
+        jLabel9.setBounds(113, 411, 100, 33);
+
+        jLabel11.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Total:");
+        jPanel4.add(jLabel11);
+        jLabel11.setBounds(113, 482, 100, 33);
+
+        txtTax.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        txtTax.setToolTipText("Tax");
+        txtTax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTaxActionPerformed(evt);
+            }
+        });
+        jPanel4.add(txtTax);
+        txtTax.setBounds(219, 409, 233, 40);
+
+        txtTotal.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        txtTotal.setToolTipText("Total ");
+        txtTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalActionPerformed(evt);
+            }
+        });
+        jPanel4.add(txtTotal);
+        txtTotal.setBounds(219, 480, 233, 40);
+
+        txtSubtotal.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        txtSubtotal.setToolTipText("Subtotal");
+        txtSubtotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSubtotalActionPerformed(evt);
+            }
+        });
+        jPanel4.add(txtSubtotal);
+        txtSubtotal.setBounds(219, 338, 233, 40);
+
+        jTabbedPane1.addTab("Added Items", jPanel4);
+
+        jPanel6.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel6.setLayout(null);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Order Payment Details");
+        jPanel6.add(jLabel4);
+        jLabel4.setBounds(70, 30, 440, 65);
+
+        txtCardNo.setToolTipText("Enter Your Card Number");
+        txtCardNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCardNoActionPerformed(evt);
+            }
+        });
+        jPanel6.add(txtCardNo);
+        txtCardNo.setBounds(250, 380, 270, 40);
+
+        jLabel5.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Card Number:");
+        jLabel5.setToolTipText("");
+        jPanel6.add(jLabel5);
+        jLabel5.setBounds(60, 380, 180, 33);
+
+        jLabel6.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Address:");
+        jPanel6.add(jLabel6);
+        jLabel6.setBounds(60, 200, 90, 33);
+
+        txtareaAddress.setColumns(20);
+        txtareaAddress.setRows(5);
+        txtareaAddress.setToolTipText("Enter Your Address");
+        jScrollPane2.setViewportView(txtareaAddress);
+
+        jPanel6.add(jScrollPane2);
+        jScrollPane2.setBounds(250, 200, 270, 90);
+
+        jLabel13.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Full Name:");
+        jPanel6.add(jLabel13);
+        jLabel13.setBounds(60, 130, 110, 33);
+
+        comboBoxPM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<!--SELECT-YOUR-CARD-->", "Credit Card", "Debit Card" }));
+        comboBoxPM.setToolTipText("Select Your Payment");
+        jPanel6.add(comboBoxPM);
+        comboBoxPM.setBounds(250, 320, 270, 40);
+
+        jLabel14.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Payment Method:");
+        jLabel14.setToolTipText("");
+        jPanel6.add(jLabel14);
+        jLabel14.setBounds(60, 320, 180, 33);
+
+        txtPayFN.setToolTipText("Enter Your Full Name");
+        txtPayFN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPayFNActionPerformed(evt);
+            }
+        });
+        jPanel6.add(txtPayFN);
+        txtPayFN.setBounds(250, 130, 270, 40);
+
+        txtCardCVV.setToolTipText("Enter Your CVV");
+        txtCardCVV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCardCVVActionPerformed(evt);
+            }
+        });
+        jPanel6.add(txtCardCVV);
+        txtCardCVV.setBounds(250, 450, 70, 40);
+
+        jLabel15.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("CVV:");
+        jLabel15.setToolTipText("");
+        jPanel6.add(jLabel15);
+        jLabel15.setBounds(60, 450, 180, 33);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Payment", jPanel3);
+
+        jPanel7.setBackground(new java.awt.Color(255, 102, 102));
+
+        TableRCT.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Item Name", "Quantity", "Item Price (RM)", "Customer "
+            }
+        ));
+        TableRCT.setToolTipText("View Your Receipt Here");
+        jScrollPane3.setViewportView(TableRCT);
+        if (TableRCT.getColumnModel().getColumnCount() > 0) {
+            TableRCT.getColumnModel().getColumn(1).setMinWidth(85);
+            TableRCT.getColumnModel().getColumn(1).setMaxWidth(85);
+            TableRCT.getColumnModel().getColumn(2).setMinWidth(135);
+            TableRCT.getColumnModel().getColumn(2).setMaxWidth(135);
+        }
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Receipt");
+
+        btnPrintReceipt.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnPrintReceipt.setText("Print Receipt");
+        btnPrintReceipt.setToolTipText("");
+        btnPrintReceipt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintReceiptActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(btnPrintReceipt, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(216, 216, 216))))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(btnPrintReceipt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+        );
+
+        jTabbedPane1.addTab("Print Receipt", jPanel7);
+
+        jPanel1.add(jTabbedPane1);
+        jTabbedPane1.setBounds(790, 110, 570, 610);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    
+    public void ItemCost(){
+        double sum = 0;
+        
+        for (int i = 0; i < TableCO.getRowCount(); i++){
+            sum = sum + Double.parseDouble(TableCO.getValueAt(i, 2).toString());
+            
+        }
+        
+        txtSubtotal.setText(Double.toString(sum));
+        
+        double cTotal = Double.parseDouble(txtSubtotal.getText());
+        
+        double cTax = (cTotal* 3.9)/100;
+        
+        String sTaxTotal = String.format("RM %.2f", cTax);
+        txtTax.setText(sTaxTotal);
+
+        String sSubtotal = String.format("RM %.2f", cTotal);  
+        txtSubtotal.setText(sSubtotal);        
+        
+        String sTotal = String.format("RM %.2f", cTotal + cTax);  
+        txtTotal.setText(sTotal);        
+    }
+    
+   
+    public void setData(){
+      String filePath = "C:\\Users\\danie\\Documents\\NetBeansProjects\\JavaAssignment\\customerdatabase\\paymentdetail.txt";
+      File file = new File(filePath);
+     
+      if(!file.exists()){
+          try {
+              file.createNewFile();
+          } catch (IOException ex) {
+              Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
+          }
+      }
+   
+      
+      try{
+          FileWriter fw = new FileWriter(file, true);
+          BufferedWriter bw = new BufferedWriter(fw);
+//          PrintWriter pw = new PrintWriter(bw);
+//          bw.write("\r");
+          bw.write(txtPayFN.getText()+ "\n" +txtareaAddress.getText()+ "\n" + comboBoxPM.getSelectedItem().toString() + "\n" + txtCardNo.getText() + "\n" + txtCardCVV.getText() + "\r\n");
+          bw.close();
+          fw.close();
+  
+          
+     
+      } catch (IOException ex) {
+            Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
+             JOptionPane.showMessageDialog(rootPane, "Please Complete Filling Your Payment Details!", "Incomplete Payment", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void paymentAlert(){
+         if (txtPayFN.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Please Enter Your Full Name!", "Incomplete Payment", JOptionPane.ERROR_MESSAGE);
+            //set cursor to the textbox
+            txtPayFN.requestFocus();   
+
+ 
+        } else if (txtareaAddress.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Please Enter Your Address!", "Incomplete Payment", JOptionPane.ERROR_MESSAGE);
+            //set cursor to the textbox
+            txtareaAddress.requestFocus();   
+
+       }  else if (comboBoxPM.getSelectedItem().equals("") || comboBoxPM.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Please Select Your Payment Method!", "Incomplete Payment", JOptionPane.ERROR_MESSAGE);
+            //set cursor to the textbox
+            comboBoxPM.requestFocus();   
+
+       }  else if (txtCardNo.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Please Enter Your Card Number!", "Incomplete Payment", JOptionPane.ERROR_MESSAGE);
+            //set cursor to the textbox
+            txtCardNo.requestFocus();   
+
+       }  else if (txtCardCVV.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Please Enter Your  CVV!", "Incomplete Payment", JOptionPane.ERROR_MESSAGE);
+            //set cursor to the textbox
+            txtCardCVV.requestFocus();  
+
+     }  else if (comboBoxPM.getSelectedIndex() == 0){
+             JOptionPane.showMessageDialog(rootPane, "Please Select Your Payment Method!", "Incomplete Payment", JOptionPane.ERROR_MESSAGE);
+            //set cursor to the textbox
+            comboBoxPM.requestFocus();  
+ 
+            
+     }      
+
+         
+    }
+    
+    
+    public void sendData(){
+
+    }
+    
+    
+    public void receipt(){
+//        DefaultTableModel model = (DefaultTableModel) TableCO.getModel();
+//        model.addRow(new Object[]{txtPayFN.getText(""});
+        
+        
+        // TODO add your handling code here:
+            String filePath = "C:\\Users\\danie\\Documents\\NetBeansProjects\\JavaAssignment\\customerorder\\receipt.txt";
+            File file = new File(filePath);
+        
+            try {
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+
+                DefaultTableModel model = (DefaultTableModel)TableRCT.getModel();
+                JTableHeader header = TableRCT.getTableHeader();
+                header.setFont(new Font("Poppins", Font.BOLD, 12));
+                header.setForeground(Color.BLACK);
+                model.setRowCount(0);
+                  
+                Object[] lines = br.lines().toArray();  
+                
+                for(int i = 0; i < lines.length; i++){
+                    String[] row = lines[i].toString().split(" ");
+         
+                    model.addRow(row);
+//                     model.addRow(new Object[]{row,row,row,txtPayFN.getText()});   
+//                    row[3] = txtPayFN.getText();
+                    model.addRow(new Object[]{"","","",txtPayFN.getText()});   
+                }
+              
+            } catch (FileNotFoundException ex) {
+                System.out.println("Something went wrong");
+            }
+    }
+    
+    
+    public void SaveRCT(){
+            String filePath = "C:\\Users\\danie\\Documents\\NetBeansProjects\\JavaAssignment\\customerorder\\receipt.txt";
+            File file = new File(filePath);
+        
+            try {
+                FileWriter fw = new FileWriter(file, false);
+                BufferedWriter bw = new BufferedWriter(fw);
+            
+            for(int i = 0; i < TableCO.getRowCount(); i++){//rows
+                for(int j = 0; j < TableCO.getColumnCount(); j++){//columns
+                    bw.write(TableCO.getValueAt(i, j)+" ");
+                    
+                }
+                bw.newLine();
+  
+            }
+                 bw.flush();
+                bw.close();
+               
+                fw.close();
+     
+    }   catch (IOException ex) {
+            Logger.getLogger(JAGUIDisplay4.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
+        // TODO add your handling code here:
+        
+        paymentAlert();
+
+        JFrame f;
+        f = new JFrame();   
+        int a=JOptionPane.showConfirmDialog(f,"Are you sure you want to proceed?");  
+        if(a==JOptionPane.YES_OPTION){  
+            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+               setData();
+               
+           String filePath = "C:\\Users\\danie\\Documents\\NetBeansProjects\\JavaAssignment\\customerorder\\customerorderdetail.txt";
+            File file = new File(filePath);
+        
+            try {
+                FileWriter fw = new FileWriter(file, true);
+                BufferedWriter bw = new BufferedWriter(fw);
+            
+            for(int i = 0; i < TableCO.getRowCount(); i++){//rows
+                for(int j = 0; j < TableCO.getColumnCount(); j++){//columns
+                    bw.write(TableCO.getValueAt(i, j)+" ");
+                    
+                }
+                bw.newLine();
+            }
+    
+            
+            bw.close();
+            SaveRCT();
+            receipt();
+  
+//              JOptionPane.showMessageDialog(this, "Payment Successful!");
+//                JOptionPane.showMessageDialog(this,"Thank You For Using SOFS!","Spiderman Online Food Services!",JOptionPane.PLAIN_MESSAGE);
+            
+            } catch (IOException ex) {
+                System.out.println("Payment Unsuccessful. Error Found!");
+            }        
+        
+              JOptionPane.showMessageDialog(this, "Payment Successful!");
+                JOptionPane.showMessageDialog(this,"Thank You For Using SOFS!","Spiderman Online Food Services!",JOptionPane.PLAIN_MESSAGE);
+//            setVisible(True);
+//            new Payment().setVisible(true);
+
+            
+            
+        } 
+        
+      
+
+        
+
+        
+
+    }//GEN-LAST:event_btnPayActionPerformed
+
+    private void ButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBackActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_ButtonBackActionPerformed
+
+    private void ButtonBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBack1ActionPerformed
+        // TODO add your handling code here:
+
+        Login lg = new Login();
+        lg.show(); //display second frame
+
+        dispose(); //close current frame (JAGuiDisplay)
+    }//GEN-LAST:event_ButtonBack1ActionPerformed
+
+    private void btnMamakGorengActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMamakGorengActionPerformed
+        // TODO add your handling code here:
+        double PriceOfItem = 7.50;
+        
+        DefaultTableModel model = (DefaultTableModel) TableCO.getModel();
+        model.addRow(new Object[]{"MamakGoreng", "1", PriceOfItem});
+        ItemCost();
+    }//GEN-LAST:event_btnMamakGorengActionPerformed
+
+    private void btnChickenRiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChickenRiceActionPerformed
+        // TODO add your handling code here:
+        
+        double PriceOfItem = 7.50;
+        
+        DefaultTableModel model = (DefaultTableModel) TableCO.getModel();
+        model.addRow(new Object[]{"HaiwaneseChickenRice", "1",  PriceOfItem});
+        ItemCost();
+    }//GEN-LAST:event_btnChickenRiceActionPerformed
+
+    private void btnCharKweyTeowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCharKweyTeowActionPerformed
+        // TODO add your handling code here:
+        double PriceOfItem = 8.50;
+        
+        DefaultTableModel model = (DefaultTableModel) TableCO.getModel();
+        model.addRow(new Object[]{"PenangCharKweyTeow", "1", PriceOfItem});
+        ItemCost();
+    }//GEN-LAST:event_btnCharKweyTeowActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        int row = TableCO.getSelectedRow();
+
+        if (row < 0) {
+            JOptionPane.showMessageDialog(this,
+                "No row is selected! Please select one row",
+                "Select row",
+                JOptionPane.ERROR_MESSAGE);
+        } else {
+            DefaultTableModel model = (DefaultTableModel) TableCO.getModel();
+            model.removeRow(row);
+        }
+        
+        
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void txtTaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTaxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTaxActionPerformed
+
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalActionPerformed
+
+    private void txtSubtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubtotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSubtotalActionPerformed
+
+    private void btnFriedRiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFriedRiceActionPerformed
+        // TODO add your handling code here:
+        double PriceOfItem = 6.00;
+        
+        DefaultTableModel model = (DefaultTableModel) TableCO.getModel();
+        model.addRow(new Object[]{"SignatureFriedRice", "1", PriceOfItem});
+        ItemCost();
+    }//GEN-LAST:event_btnFriedRiceActionPerformed
+
+    private void btnNasiLemakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNasiLemakActionPerformed
+        // TODO add your handling code here:
+        double PriceOfItem = 10.00;
+        
+        DefaultTableModel model = (DefaultTableModel) TableCO.getModel();
+        model.addRow(new Object[]{"TraditionalNasiLemak", "1",  PriceOfItem});
+        ItemCost();
+    }//GEN-LAST:event_btnNasiLemakActionPerformed
+
+    private void btnIpohHorFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIpohHorFunActionPerformed
+        // TODO add your handling code here:
+        double PriceOfItem = 10.00;
+        
+        DefaultTableModel model = (DefaultTableModel) TableCO.getModel();
+        model.addRow(new Object[]{"IpohHorFun", "1",  PriceOfItem});
+        ItemCost();
+    }//GEN-LAST:event_btnIpohHorFunActionPerformed
+
+    private void comboBoxItemCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxItemCaActionPerformed
+        // TODO add your handling code here:
+        String selectedValue = comboBoxItemCa.getSelectedItem().toString();
+        if (selectedValue.equals("IcedMilo")) {
+            double PriceOfItem = 5.50;
+
+            DefaultTableModel model = (DefaultTableModel) TableCO.getModel();
+            model.addRow(new Object[]{"IcedMilo", "1", PriceOfItem});
+            ItemCost();
+
+        } else if (selectedValue.equals("IcedTarik")){
+            double PriceOfItem = 4.50;
+
+            DefaultTableModel model = (DefaultTableModel) TableCO.getModel();
+            model.addRow(new Object[]{"IcedTarik", "1", PriceOfItem});
+            ItemCost();
+
+        }  
+    }//GEN-LAST:event_comboBoxItemCaActionPerformed
+
+    private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
+        // TODO add your handling code here:
+        
+        //food ordering
+        DefaultTableModel model= (DefaultTableModel) TableCO.getModel();
+        model.setRowCount(0);
+        txtSubtotal.setText("");
+        txtTax.setText("");
+        txtTotal.setText("");
+        
+
+        
+        
+        //payment
+        txtCardNo.setText("");
+        txtareaAddress.setText("");
+        comboBoxPM.setSelectedIndex(0);
+        txtPayFN.setText("");
+        txtCardCVV.setText("");
+        
+        
+        //print recept
+        DefaultTableModel model2 = (DefaultTableModel) TableRCT.getModel();
+        model2.setRowCount(0);
+
+        
+       
+    }//GEN-LAST:event_btnClear1ActionPerformed
+
+    private void txtCardNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCardNoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCardNoActionPerformed
+
+    private void txtPayFNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPayFNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPayFNActionPerformed
+
+    private void txtCardCVVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCardCVVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCardCVVActionPerformed
+
+    private void btnPrintReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintReceiptActionPerformed
+        // TODO add your handling code here:
+            String filePath = "C:\\Users\\danie\\Documents\\NetBeansProjects\\JavaAssignment\\customerorder\\finalreceipt.txt";
+            File file = new File(filePath);
+        
+            try {
+                FileWriter fw = new FileWriter(file, true);
+                BufferedWriter bw = new BufferedWriter(fw);
+            
+            for(int i = 0; i < TableRCT.getRowCount(); i++){//rows
+                for(int j = 0; j < TableRCT.getColumnCount(); j++){//columns
+                    bw.write(TableRCT.getValueAt(i, j) + " ");
+                    
+                }
+        
+                bw.newLine();
+
+            }
+//                bw.write(txtPayFN.getText());
+                bw.close();
+                fw.close();
+                
+           JOptionPane.showMessageDialog(null, "Your Receipt Has Printed!");
+     
+    }   catch (IOException ex) {
+            Logger.getLogger(JAGUIDisplay4.class.getName()).log(Level.SEVERE, null, ex);
+        }    
+        
+    }//GEN-LAST:event_btnPrintReceiptActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(JAGUIDisplay4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(JAGUIDisplay4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(JAGUIDisplay4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(JAGUIDisplay4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        
+
+        
+
+        
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new JAGUIDisplay4().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonBack;
+    private javax.swing.JButton ButtonBack1;
+    private javax.swing.JTable TableCO;
+    private javax.swing.JTable TableRCT;
+    private javax.swing.JButton btnCharKweyTeow;
+    private javax.swing.JButton btnChickenRice;
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnClear1;
+    private javax.swing.JButton btnFriedRice;
+    private javax.swing.JButton btnIpohHorFun;
+    private javax.swing.JButton btnMamakGoreng;
+    private javax.swing.JButton btnNasiLemak;
+    private javax.swing.JButton btnPay;
+    private javax.swing.JButton btnPrintReceipt;
+    private javax.swing.JComboBox<String> comboBoxItemCa;
+    private javax.swing.JComboBox<String> comboBoxPM;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JLabel lblSOFS;
+    private javax.swing.JTextField txtCardCVV;
+    private javax.swing.JTextField txtCardNo;
+    private javax.swing.JTextField txtPayFN;
+    private javax.swing.JTextField txtSubtotal;
+    private javax.swing.JTextField txtTax;
+    private javax.swing.JTextField txtTotal;
+    private javax.swing.JTextArea txtareaAddress;
+    // End of variables declaration//GEN-END:variables
+}
